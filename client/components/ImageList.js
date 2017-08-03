@@ -5,16 +5,9 @@ import React from 'react';
 import ImageDetails from './ImageDetails';
 
 
-const IMAGES=[
-    {title:'Joni',link:'https://dummyimage.com/600x400'},
-    {title:'Bär',link:'https://dummyimage.com/600x400'},
-    {title:'Wolf',link:'https://dummyimage.com/600x400'}
-    ];
-
-
-
-const ImageList = function () {
-    const RenderdImages= IMAGES.map(function (image) {
+const ImageList = function (props) {
+    const validImages=props.images.filter(image => !image.is_album );
+    const RenderdImages= validImages.map(function (image) {
         return(
             <ImageDetails key={image.title} image={image}/>
         );
